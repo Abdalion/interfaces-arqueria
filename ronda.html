@@ -21,15 +21,15 @@
             <div class="align-self-center">Tiempo restante para concluir la ronda:</div>
             <h3 class="align-self-center" id="time">05:00</h3>
             <br>
-            <h3 class="align-self-center">Flecha 1/5</h3><br>
+            <h3 id="numFlechas" class="align-self-center">Flecha 1/5</h3><br>
             <label for="puntuacion">Puntuacion</label>
             <input type="text" class="form-control" id="puntuacion" aria-describedby="puntuacionHelp">
 
         </div>
         <div class="d-flex flex-column">
-            <h3 class="align-self-center">Puntuacion ronda: </h3><br>
-            <h3 class="align-self-center">Puntuacion total: </h3><br>
-            <button onclick="inscribir()" id="nombre" class="btn btn-danger align-self-center"
+            <h3 id="puntuacionRondaDisplay" class="align-self-center">Puntuacion ronda: 0</h3><br>
+            <h3 id="puntuacionTotalDisplay" class="align-self-center">Puntuacion total: 0</h3><br>
+            <button onclick="siguiente()" id="nombre" class="btn btn-danger align-self-center"
                 style="margin-bottom:10vh;width:100%">Siguiente
                 flecha</button>
 
@@ -39,6 +39,12 @@
 </body>
 
 <script>
+
+    var numFlechas;
+    var numFlechasElem;
+    var scoreRonda;
+    var scoreTotal;
+
     function startTimer(duration, display) {
         var timer = duration, minutes, seconds;
         setInterval(function () {
@@ -56,11 +62,35 @@
         }, 1000);
     }
 
+    function siguiente() {
+        numFlechas++;
+        updateNumFlechas(numFlechas);
+        updateScoreRonda();
+        updateScoreTotal();
+    }
+
+    function updateScoreRonda() {
+        nuevaPuntuacion = document.getElementById("puntuacion").value;
+        var scoreRonda = localStorage.getItem('scoreRonda');
+        document.getElementById("puntuacion") = "Puntuacion ronda: " + nuevaPuntuacion;
+    }
+
     window.onload = function () {
         var fiveMinutes = 60 * 5,
             display = document.querySelector('#time');
         startTimer(fiveMinutes, display);
+        scoreTotal = localStorage.getItem('scoreTotal');
+        numFlechas = 1;
     };
+
+    function updateNumFlechas(numFlechas) {
+        numFlechasElem = document.getElementById("numFlechas");
+        numFlechasElem.innerHTML = "Flecha " + numFlechas + "/5";
+    }
+
+    const puntuacionRonda = localStorage.getItem('puntuacionRonda');
+    const puntuacionTotal = localStorage.getItem('puntuacionRonda');
+
 </script>
 
 </html>
