@@ -1,22 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <title>Inscripcion</title>
 </head>
+
 <body>
-    <div class="container d-flex flex-column justify-content-between" style="padding:10%">
-        <div class="d-flex justify-content-center" style="margin-top:10%; margin-bottom:10%">
-            <h2>Inscribete</h2>
+    <div class="container d-flex flex-column justify-content-between" style="padding:10%; height:100vh">
+        <div class="d-flex justify-content-center flex-column" style="margin-top:10%; margin-bottom:10%">
+            <h2 class="align-self-center">Inscribete</h2>
+
+            <div class="form-group" style="margin-top:5vh">
+                <label for="nombre">Nombre</label>
+                <input type="nombre" class="form-control" id="nombre" aria-describedby="nombreHelp">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Nombre</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          </div>
+        <button onclick="inscribir()" id="nombre" class="btn btn-danger" style="margin-bottom:10vh">Iniciar ronda
+            X</button>
     </div>
 </body>
+
+<script>
+    function inscribir() {
+        elemento = document.getElementById("nombre");
+        val = "nombre=" + elemento.value;
+        alert(val)
+        document.cookie = setCookie("nombre", elemento.val, 50);
+
+    }
+
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+</script>
+
 </html>
