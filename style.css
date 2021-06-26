@@ -8,6 +8,19 @@
     color: white;
 }
 
+.bg-kaki{
+    background-color: #00ACEE;
+    color: white;
+}
+
+.bg-competiciones{
+    background-color: #FBDBDD;
+}
+
+.bg-disponibles{
+    background-color: #c2eeff;
+}
+
 .hr-Marginless{
     margin: 0;
     padding: 0;
@@ -21,3 +34,4 @@
 .font-black{
     color: black;
 }
+
