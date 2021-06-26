@@ -34,3 +34,8 @@
     display: table;
     clear: both;
 }
+
+div.three {
+    border-style: solid;
+    border-color: #e63946;
+}
