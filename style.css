@@ -1,0 +1,23 @@
+.bg-deepBlue{
+    background-color: #0A1128;
+    color: white;
+}
+
+.bg-Blue{
+    background-color: #034078;
+    color: white;
+}
+
+.hr-Marginless{
+    margin: 0;
+    padding: 0;
+}
+
+.btn-coral{
+    background-color: #e63946;
+    color: white;
+}
+
+.font-black{
+    color: black;
+}
