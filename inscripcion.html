@@ -31,20 +31,7 @@
 <script>
     function inscribir() {
         elemento = document.getElementById("nombre");
-        val = "nombre=" + elemento.value;
-        alert(val)
-        document.cookie = setCookie("nombre", elemento.val, 50);
-
-    }
-
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        localStorage.setItem('nombre', elemento.value);
     }
 
 </script>

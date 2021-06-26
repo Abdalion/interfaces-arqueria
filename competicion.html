@@ -22,7 +22,8 @@
 
 <script>
 
-  alert(getCookie("nombre"))
+  const nombre = localStorage.getItem('nombre');
+  alert(nombre);
 
   function getCookie(cname) {
     let name = cname + "=";
