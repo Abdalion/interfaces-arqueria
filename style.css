@@ -35,7 +35,7 @@
     float: left;
     width: 50%;
     padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
+    height: 300px;
 }
 
 .row:after {
@@ -43,3 +43,19 @@
     display: table;
     clear: both;
 }
+
+
+.bg-kaki{
+    background-color: #00ACEE;
+    color: white;
+}
+
+.bg-competiciones{
+    background-color: #FBDBDD;
+}
+
+.bg-disponibles{
+    background-color: #c2eeff;
+}
+
+
