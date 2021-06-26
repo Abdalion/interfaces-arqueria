@@ -14,21 +14,12 @@
 }
 
 .btn-coral{
-    background-color: #034078;
-    color: white;
-}
-
-.btn-ImperialRed{
     background-color: #e63946;
-    color: #fff;
+    color: white;
 }
 
 .font-black{
     color: black;
-}
-
-.btn-twitter{
-    background-color: #0ABAFF;
 }
 
 .column {
@@ -44,7 +35,6 @@
     clear: both;
 }
 
-
 .bg-kaki{
     background-color: #00ACEE;
     color: white;
@@ -59,3 +49,7 @@
 }
 
 
+div.three {
+    border-style: solid;
+    border-color: #e63946;
+}
