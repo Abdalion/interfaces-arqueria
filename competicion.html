@@ -16,24 +16,25 @@
 
 <body>
 
-<div class="bg-deepBlue">
+  <div class="bg-deepBlue">
+
+    <div class="container">
+      <h1 align="center" style="padding: 15px 10px 5px 10px; font-weight: 600;">Archero</h1>
+    </div>
+    <hr>
+
+  </div>
 
   <div class="container">
-    <h1 align="center" style="padding: 15px 10px 5px 10px; font-weight: 600;">Archero</h1>
+
+    <div class="container">
+      <br>
+      <h2 align="center"><b>Competición: nombre</b></h2>
+      <br>
+      <p align="center"><a href="podio.html" class="btn btn-coral"
+          style="padding-right: 60px; padding-left: 60px">Clasificación</a></p>
+    </div>
   </div>
-  <hr>
-
-</div>
-
-<div class="container">
-
-  <div class="container">
-    <br>
-    <h2 align="center"><b>Competición: nombre</b></h2>
-    <br>
-    <p align="center"><a class="btn btn-coral" style="padding-right: 60px; padding-left: 60px">Clasificación</a></p>
-  </div>
-</div>
 
   <div class="container d-flex flex-column justify-content-between" style="padding: 10%">
 
@@ -53,33 +54,65 @@
     <br>
     <br>
 
-    <h4>Ronda 5/12</h4>
+    <h4>Rusultados de la ronda 1/12</h4>
     <div class="container">
       <div class="row three" align="center" style="padding: 5px">
         <div class="col-6">
-          <p style="margin: 0">Flecha 1: 5</p>
-          <p style="margin: 0">Flecha 1: 5</p>
-          <p style="margin: 0">Flecha 1: 5</p>
+          <p id="flecha1" style="margin: 0">Flecha 1: </p>
+          <p id="flecha2" style="margin: 0">Flecha 2: </p>
+          <p id="flecha3" style="margin: 0">Flecha 3: </p>
 
         </div>
         <div class="col-6">
-          <p style="margin: 0">Flecha 1: 5</p>
-          <p style="margin: 0">Flecha 1: 5</p>
-          <p style="margin: 0">Flecha 1: 5</p>
+          <p id="flecha4" style="margin: 0">Flecha 4: </p>
+          <p id="flecha5" style="margin: 0">Flecha 5: </p>
+          <p id="flecha6" style="margin: 0">Flecha 6: </p>
         </div>
       </div>
     </div>
 
     <br>
     <br>
-    <button class="btn btn-danger" style="margin-top:5vh">Iniciar ronda X</button>
+    <button onclick="iniciarRonda()" id="btnRonda" class="btn btn-danger" style="margin-top:5vh">Iniciar ronda
+      1</button>
   </div>
 </body>
 
 <script>
+  var numeroRonda;
 
-  const nombre = localStorage.getItem('nombre');
-  //alert(nombre);
+  numeroRonda = localStorage.getItem('numeroRonda');
+  if (!numeroRonda) {
+    numeroRonda = 1;
+  } else {
+    updateRondaValues();
+    updateIniciarButton();
+    if (numeroRonda >= 12) {
+      document.getElementById("btnRonda").disabled = true;
+    }
+  }
+
+  function iniciarRonda() {
+    //numeroRonda++;
+    //localStorage.setItem('numeroRonda', numeroRonda);
+    updateIniciarButton();
+    window.location.href = "ronda.html";
+
+  }
+
+  function updateIniciarButton() {
+    btnIniciar = document.getElementById("btnRonda");
+    btnIniciar.innerText = "Iniciar ronda " + numeroRonda;
+  }
+
+  function updateRondaValues() {
+    document.getElementById("flecha1").innerHTML = "Flecha 1:" + localStorage.getItem("flecha1");
+    document.getElementById("flecha2").innerHTML = "Flecha 2:" + localStorage.getItem("flecha2");
+    document.getElementById("flecha3").innerHTML = "Flecha 3:" + localStorage.getItem("flecha3");
+    document.getElementById("flecha4").innerHTML = "Flecha 4:" + localStorage.getItem("flecha4");
+    document.getElementById("flecha5").innerHTML = "Flecha 5:" + localStorage.getItem("flecha5");
+    document.getElementById("flecha6").innerHTML = "Flecha 6:" + localStorage.getItem("flecha6");
+  }
 
 </script>
 

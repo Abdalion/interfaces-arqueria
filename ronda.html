@@ -21,17 +21,16 @@
             <div class="align-self-center">Tiempo restante para concluir la ronda:</div>
             <h3 class="align-self-center" id="time">05:00</h3>
             <br>
-            <h3 id="numFlechas" class="align-self-center">Flecha 1/5</h3><br>
+            <h3 id="numFlechas" class="align-self-center">Flecha 1/6</h3><br>
             <label for="puntuacion">Puntuacion</label>
-            <input type="text" class="form-control" id="puntuacion" aria-describedby="puntuacionHelp">
+            <input required type="number" class="form-control" id="puntuacion" aria-describedby="puntuacionHelp">
 
         </div>
         <div class="d-flex flex-column">
             <h3 id="puntuacionRondaDisplay" class="align-self-center">Puntuacion ronda: 0</h3><br>
             <h3 id="puntuacionTotalDisplay" class="align-self-center">Puntuacion total: 0</h3><br>
-            <button onclick="siguiente()" id="nombre" class="btn btn-danger align-self-center"
-                style="margin-bottom:10vh;width:100%">Siguiente
-                flecha</button>
+            <button onclick="siguiente()" id="siguienteFlecha" class="btn btn-danger align-self-center"
+                style="margin-bottom:10vh;width:100%">Enviar puntuacion</button>
 
         </div>
     </div>
@@ -40,32 +39,62 @@
 
 <script>
 
-    var numFlechas;
+    var numFlechas = 1;
     var numFlechasElem;
     var scoreRonda;
     var scoreTotal;
 
-    function siguiente() {
-        if (numFlechas == 6) {
+    var scoreTotal = localStorage.getItem('scoreTotal');
+    if (!scoreTotal) localStorage.setItem('scoreTotal', 0);
 
+    localStorage.setItem('scoreRonda', 0);
+    var scoreRonda = localStorage.getItem('scoreRonda');
+
+    var numeroRonda = localStorage.getItem('numeroRonda');
+    if (!numeroRonda) localStorage.setItem('numeroRonda', 1);
+
+    updateScoreTotal(0);
+
+
+    function siguiente() {
+        score = document.getElementById("puntuacion").value;
+        if (!score) score = 0;
+        updateScoreRonda(score);
+        updateScoreTotal(score);
+        saveScore(numFlechas, score);
+        if (numFlechas == 6) {
+            document.getElementById("puntuacion").disabled = true;
+            boton = document.getElementById("siguienteFlecha");
+            boton.innerText = "Finalizar ronda";
+            boton.onclick = finalizar;
         } else {
             numFlechas++;
             updateNumFlechas(numFlechas);
-            updateScoreRonda();
-            updateScoreTotal();
         }
     }
-
-    function updateScoreRonda() {
-        nuevaPuntuacion = document.getElementById("puntuacion").value;
-        var scoreRonda = localStorage.getItem('scoreRonda');
-        document.getElementById("puntuacion") = "Puntuacion ronda: " + nuevaPuntuacion;
+    finalizar = function finalizar() {
+        window.location.href = "competicion.html";
+        var x = localStorage.getItem('numeroRonda');
+        localStorage.setItem('numeroRonda', parseInt(x) + 1);
     }
 
-    function updateScoreTotal() {
-        nuevaPuntuacion = document.getElementById("puntuacion").value;
-        var scoreRonda = localStorage.getItem('scoreRonda');
-        document.getElementById("puntuacion") = "Puntuacion ronda: " + nuevaPuntuacion;
+    function saveScore(numFlecha, score) {
+        var x = "flecha" + numFlecha;
+        localStorage.setItem(x, score);
+    }
+
+    function updateScoreRonda(score) {
+        scoreRonda = localStorage.getItem('scoreRonda');
+        var x = parseInt(scoreRonda) + parseInt(score);
+        document.getElementById("puntuacionRondaDisplay").innerHTML = "Puntuacion ronda: " + x;
+        localStorage.setItem('scoreRonda', x);
+    }
+
+    function updateScoreTotal(score) {
+        scoreTotal = localStorage.getItem('scoreTotal');
+        var x = parseInt(scoreTotal) + parseInt(score);
+        document.getElementById("puntuacionTotalDisplay").innerHTML = "Puntuacion total: " + x;
+        localStorage.setItem('scoreTotal', x);
     }
 
     window.onload = function () {
@@ -78,9 +107,8 @@
 
     function updateNumFlechas(numFlechas) {
         numFlechasElem = document.getElementById("numFlechas");
-        numFlechasElem.innerHTML = "Flecha " + numFlechas + "/5";
+        numFlechasElem.innerHTML = "Flecha " + numFlechas + "/6";
     }
-
 
     function startTimer(duration, display) {
         var timer = duration, minutes, seconds;
@@ -94,14 +122,12 @@
             display.textContent = minutes + ":" + seconds;
 
             if (--timer < 0) {
-                timer = duration;
+                timer = 10;
+                alert("El tiempo ha expirado, has sido descalificado.");
+                window.location.href = "inicio.html";
             }
         }, 1000);
     }
-
-
-    const puntuacionRonda = localStorage.getItem('puntuacionRonda');
-    const puntuacionTotal = localStorage.getItem('puntuacionRonda');
 
 </script>
 
