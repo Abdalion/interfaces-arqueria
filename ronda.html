@@ -45,31 +45,24 @@
     var scoreRonda;
     var scoreTotal;
 
-    function startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
-        setInterval(function () {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            display.textContent = minutes + ":" + seconds;
-
-            if (--timer < 0) {
-                timer = duration;
-            }
-        }, 1000);
-    }
-
     function siguiente() {
-        numFlechas++;
-        updateNumFlechas(numFlechas);
-        updateScoreRonda();
-        updateScoreTotal();
+        if (numFlechas == 6) {
+
+        } else {
+            numFlechas++;
+            updateNumFlechas(numFlechas);
+            updateScoreRonda();
+            updateScoreTotal();
+        }
     }
 
     function updateScoreRonda() {
+        nuevaPuntuacion = document.getElementById("puntuacion").value;
+        var scoreRonda = localStorage.getItem('scoreRonda');
+        document.getElementById("puntuacion") = "Puntuacion ronda: " + nuevaPuntuacion;
+    }
+
+    function updateScoreTotal() {
         nuevaPuntuacion = document.getElementById("puntuacion").value;
         var scoreRonda = localStorage.getItem('scoreRonda');
         document.getElementById("puntuacion") = "Puntuacion ronda: " + nuevaPuntuacion;
@@ -87,6 +80,25 @@
         numFlechasElem = document.getElementById("numFlechas");
         numFlechasElem.innerHTML = "Flecha " + numFlechas + "/5";
     }
+
+
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+
 
     const puntuacionRonda = localStorage.getItem('puntuacionRonda');
     const puntuacionTotal = localStorage.getItem('puntuacionRonda');
