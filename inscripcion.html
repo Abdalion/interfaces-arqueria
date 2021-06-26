@@ -22,6 +22,25 @@
                 <label for="nombre">Nombre</label>
                 <input type="nombre" class="form-control" id="nombre" aria-describedby="nombreHelp">
             </div>
+
+            <div class="form-group" style="margin-top:5vh">
+                <label for="division">Division</label><br>
+                <select id="division" name="division" id="division">
+                    <option value="Joven">Joven</option>
+                    <option value="senior">Senior</option>
+                    <option value="veterano">Veterano</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-top:5vh">
+                <label for="modalidad">Modalidad</label><br>
+                <select id="modalidad" name="modalidad" id="modalidad">
+                    <option value="Arco olimpico">Arco olimpico</option>
+                    <option value="Arco desnudo">Arco desnudo</option>
+                    <option value="Arco instintivo">Arco instintivo</option>
+                    <option value="Arco longbow">Arco longbow</option>
+                </select>
+            </div>
         </div>
         <button onclick="inscribir()" id="nombre" class="btn btn-danger" style="margin-bottom:10vh">Iniciar ronda
             X</button>
@@ -30,6 +49,9 @@
 
 <script>
     function inscribir() {
+        elemento = document.getElementById("nombre");
+        localStorage.setItem('nombre', elemento.value);
+
         elemento = document.getElementById("nombre");
         localStorage.setItem('nombre', elemento.value);
     }
