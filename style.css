@@ -14,7 +14,12 @@
 }
 
 .btn-coral{
-    background-color: #e63946;
+    background-color: #034078;
+    color: white;
+}
+
+.btn-ImperialRed{
+    background-color: #E93541;
     color: white;
 }
 
