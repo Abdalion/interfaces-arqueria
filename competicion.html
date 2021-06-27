@@ -83,6 +83,7 @@
 
 <script>
   var numeroRonda;
+  var numeroDeRondaMostrado = 0;
 
   scoreTotal = localStorage.getItem('scoreTotal');
   if (!scoreTotal) localStorage.setItem('scoreTotal', 0);
@@ -101,7 +102,7 @@
   } else {
     updateRondaValues();
     updateIniciarButton();
-    if (numeroRonda >= 12) {
+    if (numeroRonda > 12) {
       document.getElementById("btnRonda").disabled = true;
     }
   }
@@ -115,8 +116,13 @@
   }
 
   function updateIniciarButton() {
-    btnIniciar = document.getElementById("btnRonda");
-    btnIniciar.innerText = "Iniciar ronda " + numeroRonda;
+    if (numeroRonda >= 12) {
+      btnIniciar = document.getElementById("btnRonda");
+      btnIniciar.innerText = "Fin de la competencia";
+    } else {
+      btnIniciar = document.getElementById("btnRonda");
+      btnIniciar.innerText = "Iniciar ronda " + numeroRonda;
+    }
   }
 
   function updateRondaValues() {
@@ -127,7 +133,8 @@
     document.getElementById("flecha5").innerHTML = "Flecha 5: " + localStorage.getItem("flecha5");
     document.getElementById("flecha6").innerHTML = "Flecha 6: " + localStorage.getItem("flecha6");
 
-    document.getElementById("numRondasElem").innerHTML = "Rondas: " + localStorage.getItem("numeroRonda") + "/12";
+    numeroDeRondaMostrado = parseInt(localStorage.getItem("numeroRonda")) - 1;
+    document.getElementById("numRondasElem").innerHTML = "Rondas: " + numeroDeRondaMostrado + "/12";
     document.getElementById("puntTotal").innerHTML = "Punt. total: " + localStorage.getItem("scoreTotal");
     document.getElementById("numeros9").innerHTML = "Numeros 9: " + localStorage.getItem("numeros9");
     document.getElementById("numeros10").innerHTML = "Numeros 10: " + localStorage.getItem("numeros10");
