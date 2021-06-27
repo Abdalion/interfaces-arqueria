@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
@@ -14,24 +15,56 @@
 </head>
 
 <body>
-    <div class="container d-flex flex-column justify-content-between" style="padding:10%; height:100vh">
-        <div class="d-flex justify-content-center flex-column" style="margin-top:10%; margin-bottom:10%">
+
+
+<div class="bg-deepBlue">
+
+    <div class="container">
+        <h1 align="center" style="padding: 15px 10px 5px 10px; font-weight: 600;">Archero</h1>
+    </div>
+
+
+    <hr>
+
+</div>
+
+
+
+
+
+    <div class="container d-flex flex-column justify-content-between" style="padding:10%">
+        <div class="d-flex justify-content-center flex-column" style="margin-top:5%; margin-bottom:10%">
             <h2 class="align-self-center">Competicion X</h2>
-            <h2 class="align-self-center">Ronda X</h2>
+            <h3 class="align-self-center">Ronda X</h3>
+            <br>
+
             <div class="align-self-center">Tiempo restante para concluir la ronda:</div>
-            <h3 class="align-self-center" id="time">05:00</h3>
+            <br>
+            <h1 class="align-self-center timer" id="time" style="font-weight: bold">05:00</h1>
             <br>
             <h3 id="numFlechas" class="align-self-center">Flecha 1/6</h3><br>
-            <label for="puntuacion">Puntuacion</label>
+            <label for="puntuacion" style="margin-bottom: 10px">Puntuacion</label>
             <input required type="number" class="form-control" id="puntuacion" aria-describedby="puntuacionHelp">
 
         </div>
-        <div class="d-flex flex-column">
-            <h3 id="puntuacionRondaDisplay" class="align-self-center">Puntuacion ronda: 0</h3><br>
-            <h3 id="puntuacionTotalDisplay" class="align-self-center">Puntuacion total: 0</h3><br>
-            <button onclick="siguiente()" id="siguienteFlecha" class="btn btn-danger align-self-center"
-                style="margin-bottom:10vh;width:100%">Enviar puntuacion</button>
 
+
+
+        <div class="d-flex flex-column">
+            <br>
+            <button onclick="siguiente()" id="siguienteFlecha" class="btn btn-danger align-self-center"
+                style="margin-bottom:0;width:100%">Enviar puntuacion</button>
+
+        </div>
+        <br>
+        <div class="card" style="width: auto;">
+            <div class="card-header">
+                Progreso
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><p id="puntuacionRondaDisplay" class="" style="margin-bottom: auto">Puntuacion ronda: 0</p></li>
+                <li class="list-group-item"><p id="puntuacionTotalDisplay" class="" style="margin-bottom: auto">Puntuacion total: 0</p></li>
+            </ul>
         </div>
     </div>
     </div>

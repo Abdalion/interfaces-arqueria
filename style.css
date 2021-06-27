@@ -71,3 +71,10 @@ div.three {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
 }
+
+.timer{
+    border-radius: 0.5em;
+    background-color: #001F54;
+    color: #fff;
+    padding: 10px 20px 10px 20px;
+}
