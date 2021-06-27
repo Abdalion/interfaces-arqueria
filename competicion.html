@@ -27,12 +27,12 @@
 
   <div class="container">
 
-    <a href="inicio.html" class="btn btn-coral">Vovler</a>
+    <a href="inicio.html" class="btn btn-coral">Volver</a>
 
     <div class="container">
 
       <br>
-      <h2 align="center"><b>Competición: nombre</b></h2>
+      <h2 align="center"><b>Competición en Loja</b></h2>
       <br>
       <p align="center"><a href="podio.html" class="btn btn-coral"
           style="padding-right: 60px; padding-left: 60px">Clasificación</a></p>
@@ -45,19 +45,19 @@
     <div class="card">
       <div class="row" style="padding: 10px">
         <div class="col-6">
-          Rondas: <br>
-          Puntuacion total: <br>
+          <p id="numRondasElem" style="margin:0">Rondas: </p>
+          <p id="puntTotal" style="margin:0">Puntuacion total:</p>
         </div>
         <div class="col-6">
-          Numeros 9: <br>
-          Numeros 10: <br>
+          <p id="numeros9" style="margin:0">Numeros 9: </p>
+          <p id="numeros10" style="margin:0">Numeros 10: </p>
         </div>
       </div>
     </div>
     <br>
     <br>
 
-    <h4>Rusultados de la ronda 1/12</h4>
+    <h4>Resultados de la ronda 1/12</h4>
     <div class="container">
       <div class="row three" align="center" style="padding: 5px">
         <div class="col-6">
@@ -83,6 +83,16 @@
 
 <script>
   var numeroRonda;
+
+  scoreTotal = localStorage.getItem('scoreTotal');
+  if (!scoreTotal) localStorage.setItem('scoreTotal', 0);
+
+  numeros9 = localStorage.getItem('numeros9');
+  if (!numeros9) localStorage.setItem('numeros9', 0);
+
+  numeros10 = localStorage.getItem('numeros10');
+  if (!numeros10) localStorage.setItem('numeros10', 0);
+
 
   numeroRonda = localStorage.getItem('numeroRonda');
   if (!numeroRonda) {
@@ -115,6 +125,11 @@
     document.getElementById("flecha4").innerHTML = "Flecha 4:" + localStorage.getItem("flecha4");
     document.getElementById("flecha5").innerHTML = "Flecha 5:" + localStorage.getItem("flecha5");
     document.getElementById("flecha6").innerHTML = "Flecha 6:" + localStorage.getItem("flecha6");
+
+    document.getElementById("numRondasElem").innerHTML = "Rondas: " + localStorage.getItem("numeroRonda") + "/12";
+    document.getElementById("puntTotal").innerHTML = "Punt. total: " + localStorage.getItem("scoreTotal");
+    document.getElementById("numeros9").innerHTML = "Numeros 9: " + localStorage.getItem("numeros9");
+    document.getElementById("numeros10").innerHTML = "Numeros 10: " + localStorage.getItem("numeros10");
   }
 
 </script>

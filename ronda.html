@@ -17,16 +17,16 @@
 <body>
 
 
-<div class="bg-deepBlue">
+    <div class="bg-deepBlue">
 
-    <div class="container">
-        <h1 align="center" style="padding: 15px 10px 5px 10px; font-weight: 600;">Archero</h1>
+        <div class="container">
+            <h1 align="center" style="padding: 15px 10px 5px 10px; font-weight: 600;">Archero</h1>
+        </div>
+
+
+        <hr>
+
     </div>
-
-
-    <hr>
-
-</div>
 
 
 
@@ -34,8 +34,8 @@
 
     <div class="container d-flex flex-column justify-content-between" style="padding:10%">
         <div class="d-flex justify-content-center flex-column" style="margin-top:5%; margin-bottom:10%">
-            <h2 class="align-self-center">Competicion X</h2>
-            <h3 class="align-self-center">Ronda X</h3>
+            <h2 class="align-self-center">Competicion en Loja</h2>
+            <h3 id="ronda" class="align-self-center">Ronda X</h3>
             <br>
 
             <div class="align-self-center">Tiempo restante para concluir la ronda:</div>
@@ -62,8 +62,12 @@
                 Progreso
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><p id="puntuacionRondaDisplay" class="" style="margin-bottom: auto">Puntuacion ronda: 0</p></li>
-                <li class="list-group-item"><p id="puntuacionTotalDisplay" class="" style="margin-bottom: auto">Puntuacion total: 0</p></li>
+                <li class="list-group-item">
+                    <p id="puntuacionRondaDisplay" class="" style="margin-bottom: auto">Puntuacion ronda: 0</p>
+                </li>
+                <li class="list-group-item">
+                    <p id="puntuacionTotalDisplay" class="" style="margin-bottom: auto">Puntuacion total: 0</p>
+                </li>
             </ul>
         </div>
     </div>
@@ -76,6 +80,11 @@
     var numFlechasElem;
     var scoreRonda;
     var scoreTotal;
+
+
+    var numRonda = localStorage.getItem('numeroRonda');
+    document.getElementById("ronda").innerHTML = "Ronda: " + numRonda;
+
 
     var scoreTotal = localStorage.getItem('scoreTotal');
     if (!scoreTotal) localStorage.setItem('scoreTotal', 0);
@@ -121,6 +130,14 @@
         var x = parseInt(scoreRonda) + parseInt(score);
         document.getElementById("puntuacionRondaDisplay").innerHTML = "Puntuacion ronda: " + x;
         localStorage.setItem('scoreRonda', x);
+
+        if (score == 9) {
+            var oldn9 = localStorage.getItem("numeros9");
+            localStorage.setItem("numeros9", parseInt(oldn9) + 1);
+        } else if (score == 10) {
+            var oldn10 = localStorage.getItem("numeros10");
+            localStorage.setItem("numeros10", parseInt(oldn10) + 1);
+        }
     }
 
     function updateScoreTotal(score) {
