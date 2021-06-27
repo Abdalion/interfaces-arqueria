@@ -97,6 +97,7 @@
   numeroRonda = localStorage.getItem('numeroRonda');
   if (!numeroRonda) {
     numeroRonda = 1;
+    localStorage.setItem('numeroRonda', 1);
   } else {
     updateRondaValues();
     updateIniciarButton();
